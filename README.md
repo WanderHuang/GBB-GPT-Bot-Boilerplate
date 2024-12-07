@@ -1,6 +1,8 @@
-# RAG 应用
+# GPT-Bot-Boilerplate
 
 这是一个基于 RAG (Retrieval Augmented Generation) 的大模型应用，支持文档上传、知识库构建和智能问答功能。
+
+![主界面](./assets/main.png)
 
 ## 先决条件
 
