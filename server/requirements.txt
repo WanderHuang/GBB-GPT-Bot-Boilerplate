@@ -1,0 +1,17 @@
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-core>=0.1.0
+langchain-openai>=0.0.3
+langchain-chroma>=0.0.5
+sentence-transformers
+chromadb
+python-multipart
+python-dotenv
+fastapi
+uvicorn
+unstructured
+pdf2image
+pdfminer.six
+epub2txt
+pypandoc==1.11
+urllib3<2.0.0

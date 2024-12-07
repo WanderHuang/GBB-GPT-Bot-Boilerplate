@@ -1,0 +1,9 @@
+assets/books
+.env
+*.pid
+get-pip.py
+node_modules
+log
+/server/db
+/server/uploads
+test.txt

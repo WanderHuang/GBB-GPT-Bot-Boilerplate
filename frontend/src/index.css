@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-0.5deg); }
+  50% { transform: translateX(2px) rotate(0.5deg); }
+  75% { transform: translateX(-2px) rotate(-0.5deg); }
+}
+
+.animate-shake {
+  animation: shake 0.1s ease-in-out;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* 游戏风格文字阴影 */
+.game-text-shadow {
+  text-shadow: 
+    3px 3px 0 #000,
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.game-text-glow {
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+/* 强烈的抖动动画 */
+@keyframes shake-intense {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  10% { transform: translate(-5px, -5px) rotate(-5deg); }
+  20% { transform: translate(5px, -5px) rotate(5deg); }
+  30% { transform: translate(-5px, 5px) rotate(-5deg); }
+  40% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(-5px, -5px) rotate(-5deg); }
+  60% { transform: translate(5px, -5px) rotate(5deg); }
+  70% { transform: translate(-5px, 5px) rotate(-5deg); }
+  80% { transform: translate(5px, 5px) rotate(5deg); }
+  90% { transform: translate(-5px, -5px) rotate(-5deg); }
+}
+
+.animate-shake-intense {
+  animation: shake-intense 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* 火焰特效 */
+@keyframes fire {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-fire-effect {
+  animation: fire 1s ease-in-out infinite;
+}
+
+/* 动态边框容器 */
+.animated-border-container {
+  position: relative;
+  width: 100%;
+}
+
+.animated-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 光线效果 */
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 30deg,
+    rgba(147, 51, 234, 0.3) 60deg,
+    rgba(147, 51, 234, 0.3) 90deg,
+    transparent 120deg,
+    transparent 360deg
+  );
+  animation: rotate 3s linear infinite;
+}
+
+/* 内部遮罩 */
+.animated-border::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: white;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* 深色模式适配 */
+.dark .animated-border::after {
+  background: #111827;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 输入框焦点状态 */
+input:focus {
+  border: 1px solid transparent;
+  outline: none;
+  background-clip: padding-box;
+}
+
+input:focus + .animated-border::before {
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(147, 51, 234, 0.5) 20%,
+    rgba(147, 51, 234, 1) 50%,
+    rgba(147, 51, 234, 0.5) 80%,
+    transparent 100%
+  );
+}
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+  input:focus + .animated-border::before {
+    filter: blur(2px) brightness(1.2);
+  }
+}
+
+/* 自定义滚动条样式 */
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(147, 51, 234, 0.3);
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(147, 51, 234, 0.5);
+}
